@@ -1,7 +1,7 @@
 /** @format */
 import ExpenseDate from './ExpenseDate';
 import './ExpensesItem.css';
-import Card from    './Card';
+import Card from    '../UI/Card';
 
 function ExpensesItem(props) {
     const expenseDate = props.date;
