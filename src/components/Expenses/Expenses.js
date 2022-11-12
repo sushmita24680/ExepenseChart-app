@@ -1,35 +1,56 @@
-import ExpensesItem from "./ExpensesItem";
-import Card from "../UI/Card";
+/** @format */
+
+import Card from '../UI/Card';
 import './Expenses.css';
+import ExpensesFilter from './ExpensesFilter';
+import { useState } from 'react';
+import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
-const Expenses = (props) =>{
-    return (
-        <Card className="expenses">
-            <ExpensesItem
-                date={props.item[0].date}
-                title={props.item[0].title}
-                amount={props.item[0].amount}
-            ></ExpensesItem>
-            <ExpensesItem
-                date={props.item[1].date}
-                title={props.item[1].title}
-                amount={props.item[1].amount}
-            ></ExpensesItem>
-            <ExpensesItem
-                date={props.item[2].date}
-                title={props.item[2].title}
-                amount={props.item[2].amount}
-            ></ExpensesItem>
-            <ExpensesItem
-                date={props.item[3].date}
-                title={props.item[3].title}
-                amount={props.item[3].amount}
-            ></ExpensesItem>
-        </Card>
+const Expenses = (props) => {
+  const [filteredYear, setFilteredYear] = useState('2020');
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
+
+  const filteredExpenses = props.item.filter((item)=>{
+   
+    return item.date.getFullYear().toString()=== filteredYear;
+
+  })
+  
 
 
-    );
+  return (
+    <>
+      <Card className='expenses'>
+       
+        <ExpensesFilter
+          selected={filteredYear}
+          onChange={filterChangeHandler}
+        />
+        <ExpensesChart expenses={filteredExpenses}/>
+        < ExpensesList expensesList={filteredExpenses}/>
+         
+        {/* {props.item.map((index) => {
+            const {date, title, amount} = index;
+            return (
+                <ExpensesItem
+                    date={date}
+                    title={title}
+                    amount={amount}
+                >
+                </ExpensesItem>)
+ })}  
+ 
+ if we donot want write return use()  parenthsises after map function for respective 
+ callback example given below.
+ */}
 
-}
+        
+      </Card>
+    </>
+  );
+};
 
-export default Expenses; 
+export default Expenses;

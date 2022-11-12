@@ -1,0 +1,30 @@
+.express-filter{
+color:white;
+font-size: 22px;
+    font-weight: bold;
+}
+.express-filter-control{
+padding: 10px;
+display: flex;
+justify-content:space-between;
+
+}
+.express-filter-control > label{
+margin: 0.5rem 0;
+
+}
+
+.express-filter-control > select{
+    font:inherit;
+    padding:10px ;
+    background-color: white;
+    border-radius: 7%;
+    padding-inline: 0.5rem;
+    
+}
+
+.express-filter-control > select >option{
+    font:inherit;
+    
+}
+
