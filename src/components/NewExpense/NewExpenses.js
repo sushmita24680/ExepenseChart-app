@@ -2,7 +2,7 @@
     import './NewExpenses.css';
     import {useState} from 'react';
     const NewExpense = (props) =>{
-        const [showExpenseForm, setShowExpenseForm] = useState(false);
+        const [showExpenseForm, setShowExpenseForm] = useState(true);
 
         const cancelButtonHandler =(click)=>{
             setShowExpenseForm(click);
@@ -29,7 +29,7 @@
             { (showExpenseForm === false  )? (<ExpenseForm onSaveExpeneseData={saveExpeneseHandler} onCancel={cancelButtonHandler} />)
             :
                ( 
-                <button onClick={addExpenseHandler}>Add Expense</button>
+                <button onClick={addExpenseHandler}>Add New Expense</button>
                
                
                )}
